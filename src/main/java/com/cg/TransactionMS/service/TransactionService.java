@@ -1,12 +1,15 @@
-package com.cg.AccountMS.service;
+package com.cg.TransactionMS.service;
 
-import com.cg.AccountMS.dto.AccountEntity;
+import com.cg.TransactionMS.dto.AccountEntity;
+import com.cg.TransactionMS.exception.AccountExistException;
+import com.cg.TransactionMS.exception.AccountNotFoundException;
 
-public interface AccountService {
+public interface TransactionService {
 
-	public AccountEntity getAccountByAccNo(long accountno);	
-	public String updateAccount(long accountno, AccountEntity account);
-	public String addAccount(AccountEntity account);
-	public String deleteAccount(long accountno);
+	public AccountEntity getAccountByAccNo(long accountno) throws AccountNotFoundException;
+
+	public String debitTransaction(long accountno, double amount) throws AccountNotFoundException;
+
+	String creadiTransaction(long accountno, double amount) throws AccountNotFoundException;	
 
 }
